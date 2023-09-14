@@ -1,3 +1,14 @@
+This project was build as a test/task for frontend role.
+i make use of react js and tailwind css, i have fetch my data from a json file on the website.
+thank you.
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
