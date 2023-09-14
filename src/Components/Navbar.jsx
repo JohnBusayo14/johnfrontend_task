@@ -12,8 +12,8 @@
 //       setMobileMenuOpen(!isMobileMenuOpen);
 //     };
 //   return (
-//     <nav className="bg-[#4c956c] sm:flex sm:flex-row ">
-//       <div className="flex items-center justify-between w-full items-center h-20 px-10">
+    // <nav className="bg-[#4c956c] sm:flex  ">
+    //   <div className="flex items-center justify-between w-full h-20 px-10">
        
         // <Link to="/">
         // <div className="w-10 flex flex-col items-center justify-center rounded-full"><img src={logo} alt="logo image" className=' rounded-full' />
@@ -27,7 +27,7 @@
 //         </div>
 //         <div className="hidden md:flex space-x-4">
 //           <Link to="/">
-//           <a href="#" className="text-white">Home</a>
+//           <a href="/" className="text-white">Home</a>
 //           </Link>
 //           <Link to="/about">
 //         <a href="#secondpage" className="text-white">About us</a>
@@ -40,10 +40,10 @@
 //       {/* Mobile menu */}
 //       <div className="md:hidden">
 //         <button className="text-white" onClick={toggleMobileMenu}>
-//           <i className="fas fa-bars font-extrabold text-2xl">X</i>
+//         <i className='fas fa-align-justify'></i>
 //         </button>
 //         {isMobileMenuOpen && (
-//           <div className="mt-2">
+//           <div className="mt-2 flex flex-row gap-10">
 //               <Link to="/">
 //           <a href="#" className="block text-white">Home</a>
 //           </Link>
@@ -64,49 +64,85 @@
 // };
 
 // export default Navbar;
+
+
+
 import React, { useState } from 'react';
-import './Navbar.css';
 import { Link } from 'react-router-dom';
 import logo from "../assets/images/logo.png"
 
-const Navbar = () => {
- 
- // NavigationMenu.js
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+function Navbar() {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <div className="navigation-menu">
-      <div className="logo">
-      <Link to="/">
+    <nav className="bg-[#4c956c] sm:flex  ">
+      <header className="flex items-center justify-between w-full h-20 px-10">
+        <nav className="w-full mx-auto flex items-center justify-between">
+        <Link to="/">
         <div className="w-10 flex flex-col items-center justify-center rounded-full"><img src={logo} alt="logo image" className=' rounded-full' />
         </div>
         </Link>
-      </div>
-      <nav className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
-        <ul>
-          <li>
-           <Link to="/"> <a href="/">Home</a></Link>
-            </li>
-          <li>
-            <Link to="/about"><a href="/about">About Us</a></Link>
-          </li>
-          <li>
-            <Link to="/sevices"> <a href="/service">Services</a> </Link>
-          </li>
-      
-        </ul>
-      </nav>
-      <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
-        <i className={`fa ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
-      </div>
-    </div>
+          <div className="md:hidden">
+            <button
+              onClick={toggleMobileMenu}
+              className="text-white hover:text-gray-300 focus:outline-none"
+            >
+              <svg
+                className="w-6 h-6 fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                {isMobileMenuOpen ? (
+                  <path d="M19 13H5v-2h14v2z" />
+                ) : (
+                  <>
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 4h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
+                  </>
+                )}
+              </svg>
+            </button>
+          </div>
+          <div className="hidden md:flex space-x-4">
+            <a href="/" className="text-white hover:text-gray-300 px-10">
+              Home
+            </a>
+            <a href="/about" className="text-white hover:text-gray-300 px-10">
+              About
+            </a>
+            <a href="/service" className="text-white hover:text-gray-300 px-10">
+              Services
+            </a>
+            
+          </div>
+        </nav>
+      </header>
+      {isMobileMenuOpen && (
+        <div className="md:hidden">
+          <div className="bg-[#4c956c]">
+            <a href="/" className="block text-white py-2 px-4 hover:bg-[#1b914e]">
+              Home
+            </a>
+            <a href="/about" className="block text-white py-2 px-4 hover:bg-[#1b914e]">
+              About
+            </a>
+            <a href="/service" className="block text-white py-2 px-4 hover:bg-[#1b914e]">
+              Services
+            </a>
+           
+          </div>
+        </div>
+      )}
+      <main className="container mx-auto p-4">
+        {/* Your page content goes here */}
+      </main>
+    </nav>
   );
-};
+}
 
-
-export default Navbar
+export default Navbar;
